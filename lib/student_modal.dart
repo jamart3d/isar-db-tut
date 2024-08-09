@@ -8,7 +8,7 @@ import 'entities/student.dart';
 class StudentModal extends StatefulWidget {
   final IsarService service;
 
-  const StudentModal(this.service, {Key? key}) : super(key: key);
+  const StudentModal(this.service, {super.key});
 
   @override
   State<StudentModal> createState() => _StudentModalState();
