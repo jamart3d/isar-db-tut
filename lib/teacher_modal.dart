@@ -17,7 +17,7 @@ class _TeacherModalState extends State<TeacherModal> {
   final _textController = TextEditingController();
   Course? selectedCourse;
 
-  @override
+   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
@@ -27,14 +27,17 @@ class _TeacherModalState extends State<TeacherModal> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text("Give your new teacher a name",
-                style: Theme.of(context).textTheme.headlineSmall),
+            Text(
+              "Giveyour new teacher a name",
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
             TextFormField(
               controller: _textController,
               autofocus: true,
               validator: (value) {
-                if (value == null || value.isEmpty)
+                if (value == null || value.isEmpty) {
                   return "Teacher Name is not allowed to be empty";
+                }
                 return null;
               },
             ),
@@ -46,35 +49,40 @@ class _TeacherModalState extends State<TeacherModal> {
                   selectedCourse = data.first;
                   final courses = data.map((course) {
                     return DropdownMenuItem<Course>(
-                        value: course, child: Text(course.title));
+                      value: course,
+                      child: Text(course.title),
+                    );
                   }).toList();
-
                   return DropdownButtonFormField<Course>(
-                      items: courses,
-                      value: selectedCourse,
-                      onChanged: (course) => selectedCourse = course);
+                    items: courses,
+                    value: selectedCourse,
+                    onChanged: (course) => selectedCourse = course,
+                  );
                 }
                 return const Center(child: CircularProgressIndicator());
               },
             ),
-            ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    print(selectedCourse!.id);
-                    widget.service.saveTeacher(
-                      Teacher()
-                        ..name = _textController.text
-                        ..course.value = selectedCourse,
-                    );
-
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text(
-                            "New teacher '${_textController.text}' saved in DB")));
-
-                    Navigator.pop(context);
-                  }
-                },
-                child: const Text("Add new teacher"))
+              ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  print(selectedCourse!.id);
+                  widget.service.saveTeacher(
+                    Teacher()
+                      ..name = _textController.text
+                      ..course.value = selectedCourse,
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        "New teacher '${_textController.text}' saved in DB",
+                      ),
+                    ),
+                  );
+                  Navigator.pop(context);
+                }
+              },
+              child: const Text("Add new teacher"),
+            )
           ],
         ),
       ),

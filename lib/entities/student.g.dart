@@ -15,7 +15,7 @@ extension GetStudentCollection on Isar {
 
 const StudentSchema = CollectionSchema(
   name: r'Student',
-  id: 252783119861727552,
+  id: -252783119861727542,
   properties: {
     r'name': PropertySchema(
       id: 0,
@@ -31,7 +31,7 @@ const StudentSchema = CollectionSchema(
   indexes: {},
   links: {
     r'courses': LinkSchema(
-      id: 4981409246323567616,
+      id: 4981409246323567500,
       name: r'courses',
       target: r'Course',
       single: false,

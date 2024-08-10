@@ -41,6 +41,7 @@ class _CourseModalState extends State<CourseModal> {
                   if (_formKey.currentState!.validate()) {
                     widget.service
                         .saveCourse(Course()..title = _textController.text);
+                        print("Course saved");
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text(
                             "New course '${_textController.text}' saved in DB")));
