@@ -58,6 +58,14 @@ class MyHomePage extends StatelessWidget {
                             onPressed: () {
                               CourseDetailPage.navigate(
                                   context, course, service);
+                                  print("Course clicked");
+                                  print(course.title);
+                                  print(course.id);
+                                  print(course.students.length);
+                                  //print(course.students.first.name);
+                                  print(course.students.map((e) => e.name).toList());
+
+
                             },
                             child: Text(course.title),
                           );
