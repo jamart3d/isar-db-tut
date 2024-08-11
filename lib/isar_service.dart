@@ -6,6 +6,14 @@ import 'package:path_provider/path_provider.dart';
 
 
 
+
+
+class IsarService {
+  late Future<Isar> db;
+
+  IsarService() {
+    db = openDB();
+  }
   Future<Isar> openDB() async {
       final dir = await getApplicationDocumentsDirectory();
     if (Isar.instanceNames.isEmpty) {
@@ -18,14 +26,6 @@ import 'package:path_provider/path_provider.dart';
 
     return Future.value(Isar.getInstance());
   }
-
-class IsarService {
-  late Future<Isar> db;
-
-  IsarService() {
-    db = openDB();
-  }
-
   Future<void> saveCourse(Course newCourse) async {
     final isar = await db;
     isar.writeTxnSync<int>(() => isar.courses.putSync(newCourse));
