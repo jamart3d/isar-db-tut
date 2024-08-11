@@ -55,17 +55,33 @@ class MyHomePage extends StatelessWidget {
                   children: snapshot.hasData
                       ? snapshot.data!.map((course) {
                           return ElevatedButton(
-                            onPressed: () {
+                            onPressed: () async {
                               CourseDetailPage.navigate(
                                   context, course, service);
-                                  print("Course clicked");
-                                  print(course.title);
-                                  print(course.id);
-                                  print(course.students.length);
-                                  //print(course.students.first.name);
-                                  print(course.students.map((e) => e.name).toList());
+                              print("Course clicked");
+                              print(course.title);
+                              print(course.id);
+                              // print(service.getAllStudentsFromCourse(course));
+                              final studentsFuture =
+                                  service.getAllStudentsFromCourse(
+                                      course); // Get the Future
 
+                              // Use await to wait for the Future to complete and get the result
+                              final students = await studentsFuture;
 
+                              for (var student in students) {
+                                print(student.name);
+                              }
+
+                              //print(course.students);
+                             //print(course.teacher);
+                              final teacherFuture =
+                                  service.getTeacherFor(course);
+                              final teacherF = await teacherFuture;
+                              print(teacherF?.name);
+                              //print(course.students.first.name);
+                              print(
+                                  course.students.map((e) => e.name).toList());
                             },
                             child: Text(course.title),
                           );
@@ -80,6 +96,7 @@ class MyHomePage extends StatelessWidget {
               showModalBottomSheet(
                   context: context,
                   builder: (context) {
+                    print(context);
                     return CourseModal(service);
                   });
             },

@@ -49,6 +49,7 @@ class IsarService {
   Stream<List<Course>> listenToCourses() async* {
     final isar = await db;
     yield* isar.courses.where().watch(fireImmediately: true);
+    
   }
 
   Future<void> cleanDb() async {
@@ -74,5 +75,14 @@ class IsarService {
 
     return teacher;
   }
+
+    Future<List<Student>> getAllStudentsFromCourse(Course course) async {
+    final isar = await db;
+    return await isar.students
+        .filter()
+        .courses((q) => q.idEqualTo(course.id))
+        .findAll();
+  }
+
 
 }
