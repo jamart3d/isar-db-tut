@@ -1,6 +1,3 @@
-# myapp
-
-A google idx Flutter project showing a working isar database with backlinks.  copied from ?  and teaked to work on google idx
 <a href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2Fjamart3d%2Fisar-db-tut">
   <picture>
     <source
@@ -15,6 +12,11 @@ A google idx Flutter project showing a working isar database with backlinks.  co
       src="https://cdn.idx.dev/btn/open_purple_32.svg">
   </picture>
 </a>
+
+# myapp
+
+A google idx Flutter project showing a working isar database with backlinks.  copied from ?  and teaked to work on google idx
+
 
 ## Getting Started
 
