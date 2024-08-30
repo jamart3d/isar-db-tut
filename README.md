@@ -15,7 +15,7 @@
 
 # myapp
 
-A google idx Flutter project showing a working isar database with backlinks.  copied from ?  and teaked to work on google idx
+A google idx Flutter project showing a working isar database with backlinks.  copied from ?  and tweaked to work on google idx
 
 
 ## Getting Started
