@@ -22,7 +22,7 @@ and tweaked a little to work in google idx
 
 ## Getting Started
 
-for some reason the andriod emulator is tempermental staring up sometimes. web emulator disabled.
+idx web emulator disabled.
 
 This project is a starting point for a Flutter application.
 
